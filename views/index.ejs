@@ -4,13 +4,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List App</title>
+    <title>Note App</title>
     <link rel="stylesheet" href="/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 </head>
 <body>
-    
+    <section class="note-container">
+        <h2>Note List</h2>
+        <section class="note">
+            <form action="/" method="POST" class="note-header">
+                <input type="text" name="title" placeholder="Title">
+                <textarea rows="6" cols="45" name="content" placeholder="Write here"></textarea>
+                <button type="submit"><span class="fas fa-plus">Add Note</span></button>
+            </form>
+            <ul class="note-list">
+                <% Notes.forEach(content => {%> 
+                    <li class="note-list-item">
+                        <div class="note-list-item-title">
+                            <%= content.title %> 
+                        </div>
+                        <div class="note-list-item-content">
+                            <%= content.content %> 
+                        </div>
+                        <a href="/edit/<%=Notes._id %>" class="edit"><span class="fas fa-edit"></span></a>
+                        <a href="/remove/<%=Notes._id %>" class="remove"><span class="fas fa-times"></span></a>
+                    </li>
+                <% }) %>
+            </ul>
+        </section>
+    </section>
 </body>
 </html>

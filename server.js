@@ -18,13 +18,53 @@ mongoose.connect(process.env.DB_CONNECTION,
 
 app.get('/', async (req, res) => {
     try {
-       Note.find({}, (err, notess) => {
+       Note.find({}, (err, notes) => {
             res.render('index.ejs', { Notes: notes })
         })
     } catch (err) {
-        if (err) return res.status(500).send(err)
+        console.log(err)
     }
 })
+
+app.post('/', async (req, res) => {
+    const note = new Note(
+        {
+            title: req.body.title,
+            content: req.body.content,
+        }
+    )
+    try {
+        await note.save()
+        console.log(note)
+        res.redirect('/')
+    } catch (err) {
+        console.log(err)
+    }
+})
+
+// Edit or Update Method
+app
+    .route('/edit/:id')
+    .get((req, res) => {
+        const id = req.params.id
+        Note.find({}, (err, notes) => {
+            res.render('edit.ejs', {
+                Notes: notes, noteId: id
+            })
+        })
+    })
+    .post((req, res) => {
+        const id = req.params.id
+        Note.findByIdAndUpdate(
+            id,{
+                title: req.body.title,
+                content: req.body.content,
+            },
+            err => {
+                console.log(err);
+            }
+        )
+    })
 
 // Connect to server
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`))
