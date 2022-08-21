@@ -16,9 +16,13 @@
         <h2>Note List</h2>
         <section class="note">
             <form action="/" method="POST" class="note-header">
-                <input type="text" name="title" placeholder="Title">
-                <textarea rows="6" cols="45" name="content" placeholder="Write here"></textarea>
-                <button type="submit"><span class="fas fa-plus">Add Note</span></button>
+                <input type="text" name="title" placeholder="Note Title">
+                <textarea rows="6" cols="45" name="content" placeholder="Text Body"></textarea>
+                <button>
+                    <span class="transition"></span>
+                    <span class="gradient"></span>
+                    <span class="label">Add Note</span>
+                  </button>
             </form>
             <ul class="note-list">
                 <% Notes.forEach(details => {%> 
@@ -29,8 +33,10 @@
                         <div class="note-list-item-content">
                             <%= details.content %> 
                         </div>
-                        <a href="/edit/<%=details._id %>" class="edit"><span class="fas fa-edit"></span></a>
-                        <a href="/remove/<%=details._id %>" class="remove"><span class="fas fa-times"></span></a>
+                        <div class="icons">
+                            <a href="/edit/<%=details._id %>" class="edit"><span class="fas fa-edit"></span></a>
+                            <a href="/remove/<%=details._id %>" class="remove"><span class="fas fa-trash"></span></a>
+                        </div>
                     </li>
                 <% }) %>
             </ul>
