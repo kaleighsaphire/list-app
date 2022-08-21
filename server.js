@@ -56,15 +56,29 @@ app
     .post((req, res) => {
         const id = req.params.id
         Note.findByIdAndUpdate(
-            id,{
+            id,
+            {
                 title: req.body.title,
-                content: req.body.content,
+                content: req.body.content
             },
+
             err => {
-                console.log(err);
-            }
-        )
+                if (err) return res.status(500).send(err);
+                res.redirect("/");
+            });
+    });
+
+// Delete Note
+app
+    .route('/remove/:id')
+    .get((req, res) => {
+        const id = req.params.id
+        Note.findByIdAndRemove(id, err => {
+            if (err) return res.status(500).send(err);
+            res.redirect('/')
+        })
     })
+
 
 // Connect to server
 app.listen(PORT, () => console.log(`Server is running on port ${PORT}`))
