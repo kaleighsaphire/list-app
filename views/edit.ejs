@@ -21,7 +21,7 @@
                         <li class="note-list-item">
                             <form action="/edit/<%= details._id %>" method="POST">
                                 <input type="text" name="title" value="<%=details.title %>">
-                                <textarea rows="6" cols="45" name="content"><%= details.content %></textarea>
+                                    <textarea rows="6" cols="45" name="content"><%= details.content %></textarea>
                                 <button type="submit" class="confirm"><i class="fas fa-check"></i> edit</button>
                                 <!-- <a href="/" class="cancel"><i class="fas fa-trash"></i></a> -->
                             </form>
@@ -45,6 +45,6 @@
                 <% }) %>
             </ul>
         </section>
-    </section>   
+    </section>
 </body>
 </html>

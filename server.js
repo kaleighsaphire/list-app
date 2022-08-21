@@ -1,20 +1,23 @@
-// Declare Variables
 const express = require('express')
-const mongoose = require('mongoose')
 const app = express()
-require('dotenv').config()
+const mongoose = require('mongoose')
+const connectDB = require('./config/db')
+require('dotenv').config({path: './config/.env'})
 const Note = require('./models/note')
+const homeRoutes = require('./routes/home')
+const editRoutes = require('./routes/edit')
 const PORT = 3000
 
-//Set Middlewares
+connectDB()
+
+// Set Middlewares
 app.set('view engine', 'ejs')
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }))
 
-mongoose.connect(process.env.DB_CONNECTION, 
-    { useNewUrlParser: true },
-    () => {console.log(`Connected to database`)}
-) 
+// Set Routes
+app.use('/', homeRoutes)
+app.use('/edit', editRoutes)
 
 app.get('/', async (req, res) => {
     try {
