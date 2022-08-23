@@ -12,17 +12,6 @@ body{
     align-items: center;
     justify-content: center;
 }
-textarea {
-    border: none;
-    overflow: auto;
-    outline: none;
-
-    -webkit-box-shadow: none;
-    -moz-box-shadow: none;
-    box-shadow: none;
-
-    resize: none;
-}
 
 .note-container {
     color: white;
@@ -57,6 +46,7 @@ input {
     font-size: 1em;
     line-height: 2em;
     font-family: 'Archivo Narrow', sans-serif;
+    caret-color: rgb(240, 133, 117);
 }
 
 textarea {
@@ -67,6 +57,10 @@ textarea {
     border-radius: 5px;
     font-size: 1em;
     font-family: 'Archivo Narrow', sans-serif;
+    border: none;
+    overflow: auto;
+    outline: none;
+    caret-color: rgb(240, 133, 117);
 }
 
 button {
@@ -137,6 +131,13 @@ ul {
     display: flex;
     flex-direction: column;
 }
+.note-list-item-title::selection{
+    background: rgb(232, 222, 89, .5);
+}
+.note-list-item-content::selection{
+    background: rgb(232, 222, 89, .5);
+    color:rgb(104, 103, 103)
+}
 .note-list-item-title {
     color: rgb(68, 68, 68);
 }
@@ -155,7 +156,10 @@ ul {
     border: none;
     border-radius: 5px;
 }
-
+.edit-icons {
+    display: flex;
+    justify-content: end;
+}
 .note-list-item .confirm {
     background-color: rgb(232, 222, 89);
 }
@@ -180,19 +184,19 @@ a.cancel {
     padding: 0 2px;
 }
 
+.note-list-item .remove {
+    color: rgb(240, 133, 117);
+    padding: 0 2px;
+}
 .icons {
     cursor: pointer;
     margin-left: auto;
 }
 
-.note-list-item .remove {
-    color: rgb(240, 133, 117);
-    padding: 0 2px;
-   
-}
 .fas {
     font-size: .8em;
 }
+
 @media only screen and (max-width: 900px) {
     .note-container {
         padding: 15px;

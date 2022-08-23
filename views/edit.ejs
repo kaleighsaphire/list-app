@@ -25,9 +25,9 @@
                         <li class="note-list-item">
                             <form action="/edit/<%= details._id %>" method="POST">
                                 <input type="text" name="title" value="<%=details.title %>">
-                                    <textarea rows="6" cols="45" name="content"><%= details.content %></textarea>
-                                <button type="submit" class="confirm"><i class="fas fa-check"></i></button>
-                                <a href="/" class="cancel"><i class="fas fa-times"></i></a>
+                                    <textarea rows="6" cols="45" name="content" autocomplete="on" spellcheck="true"><%= details.content %></textarea>
+                                <button type="submit" class="confirm" title="Submit Edit"><i class="fas fa-check"></i></button>
+                                <a href="/" class="cancel" title="Cancel Edit"><i class="fas fa-times"></i></a>
                             </form>
                         </li>
                     <% } else { %>
@@ -38,12 +38,10 @@
                                     <div class="note-list-item-content">
                                         <%= details.content %> 
                                     </div>
-                                    <a href="/edit/<%= details._id %>" class="edit">
-                                        <span class="fas fa-edit"></span>
-                                    </a>
-                                    <a href="/remove/<%= details._id %>" class="remove">
-                                        <span class="fas fa-times"></span>
-                                    </a>
+                                    <div class="edit-icons">
+                                        <a href="/edit/<%= details._id %>" class="edit" title="Edit Note"><span class="fas fa-edit"></span></a>
+                                        <a href="/remove/<%= details._id %>" class="remove" title="Delete Note"><span class="fas fa-trash"></span></a>
+                                    </div>
                                 </li>
                         <% } %>
                 <% }) %>

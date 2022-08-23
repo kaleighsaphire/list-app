@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Note App</title>
+    <title>Notes</title>
     <link rel="stylesheet" href="/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -17,11 +17,11 @@
 </head>
 <body>
     <section class="note-container">
-        <h2>Note List</h2>
+        <h2>Notes</h2>
         <section class="note">
             <form action="/" method="POST" class="note-header">
                 <input type="text" name="title" placeholder="Note Title">
-                    <textarea rows="6" cols="45" name="content" placeholder="Text Body"></textarea>
+                    <textarea rows="6" cols="45" name="content" placeholder="Text Body" autocomplete="on" spellcheck="true"></textarea>
                 <button>
                     <span class="transition"></span>
                     <span class="gradient"></span>
@@ -38,8 +38,8 @@
                             <%= details.content %> 
                         </div>
                         <div class="icons">
-                            <a href="/edit/<%=details._id %>" class="edit"><span class="fas fa-edit"></span></a>
-                            <a href="/edit/remove/<%=details._id %>" class="remove"><span class="fas fa-trash"></span></a>
+                            <a href="/edit/<%=details._id %>" class="edit"><span class="fas fa-edit" title="Edit Note"></span></a>
+                            <a href="/edit/remove/<%=details._id %>" class="remove"><span class="fas fa-trash" title="Delete Note"></span></a>
                         </div>
                     </li>
                 <% }) %>
