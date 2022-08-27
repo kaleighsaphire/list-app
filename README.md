@@ -1,7 +1,7 @@
 #list-app
 Note/blog application using CRUD operations. 
 
-![alt tag](https://i.imgur.com/PtYuMr4.png)
+![alt tag](https://imgur.com/PtYuMr4)
 
 ## How It's Made:
 
